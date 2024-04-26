@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        /* Global styles */
+        body {
+            background-color: #f1f1f1; /* Light gray background color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff; /* White background color */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            padding: 20px;
+        }
+
+        /* Heading styles */
+        h1 {
+            color: #333; /* Dark gray text color */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Message styles */
+        .message {
+            color: #777; /* Light gray text color */
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Results styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9; /* Light gray background color */
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+
+        /* No results styles */
+        .no-results {
+            color: #777; /* Light gray text color */
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if search_text == "Nothing" %}
+            <div class="message">You have not entered anything to search for.</div>
+        {% else %}
+            <h1>Search Results for "{{ search_text }}"</h1>
+            {% if results %}
+                <ul>
+                    {% for title in results %}
+                        <li>{{ title }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-results">No results found.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
